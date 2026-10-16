@@ -1,3 +1,8 @@
+---
+name: homesafe-project-maintain
+description: 为项目建立并持续维护 AI_proj_note 认知笔记体系（rule、files、blocks、vision_prefer、preview、note、progress、lessons 八文件），使换人、换 Agent、换对话时项目认知不丢。触发场景为用户要求初始化或维护项目笔记、首次接触新项目或新接手已有项目需要召回项目认知时。
+---
+
 # Skill：AI 项目笔记管理
 
 > 目标：为项目建立并持续维护一套 `AI_proj_note` 认知资产，使换人、换 Agent、换对话时认知不丢。
