@@ -17,11 +17,11 @@
 | REQUESTS | rule.md | APN:INSERT:REQUESTS | 新修改要求 | UPSERT | REQ-ID |
 | OPS | rule.md | APN:INSERT:OPS | 运维前读取；配套变化 | UPSERT | OPS-ID |
 | FILES | files.md | APN:INSERT:FILES | 修改文件前后 | UPSERT | 文件路径 |
-| REUSE | files.md | APN:INSERT:REUSE | 设计前读取；新复用资产 | UPSERT | 路径+名称 |
+| REUSE | files.md | APN:INSERT:REUSE | 设计前读取；新复用资产 | UPSERT | 路径/包名+名称 |
 | BLOCKS | blocks.md | APN:INSERT:BLOCKS | 模块设计/变更 | UPSERT | 模块路径 |
 | UI | vision_prefer.md | APN:INSERT:UI | UI 开发/改版 | UPSERT | 页面/路由 |
 | TOKENS | vision_prefer.md | APN:INSERT:TOKENS | UI 开发；token 变化 | UPSERT | token 名 |
-| UI_REUSE | vision_prefer.md | APN:INSERT:UI_REUSE | UI 设计；组件/样式变化 | UPSERT | 路径+名称 |
+| UI_REUSE | vision_prefer.md | APN:INSERT:UI_REUSE | UI 设计；组件/样式变化 | UPSERT | 路径/包名+名称 |
 | USER_PREF | vision_prefer.md | APN:INSERT:USER_PREF | 用户表达偏好 | UPSERT | 偏好主题 |
 | PREVIEW | preview.md | APN:BEGIN:PREVIEW | 需要产品分析时 | REPLACE | 单例区块 |
 | FUTURE | note.md | APN:INSERT:FUTURE | 设计前读取；未来意向 | UPSERT | FUT-ID |
@@ -68,7 +68,8 @@
 <!-- APN:INSERT:FILES -->
 
 ## 可复用资产
-> 格式：名称（路径）| 用途 | 复用方式/使用方
+> 格式：名称 | 来源：内部路径/外部包名@版本 | 能力关键词 | 接口/契约 | 适用与不适用场景 | 扩展点/包装层路径 | 使用方
+> 外部资产另附官方 URL 与许可证；内部资产无对应字段时写“无”，不要编造。
 <!-- APN:INSERT:REUSE -->
 ```
 
@@ -84,7 +85,10 @@
 ## 模块：[模块路径]
 - 职责：
 - 输入 / 输出：
-- 依赖：
+- 复用决策：A/B/C/D/E、选择理由；E 需说明 A–D 不适用原因
+- 候选资产/外部库：内部路径或官方 URL、包名与版本
+- 稳定核心 / 变化点 / 公共契约：
+- 依赖：外部依赖注明版本与许可证
 - 约束：
 - 测试方式：
 - 对外入口：
@@ -107,7 +111,8 @@
 <!-- APN:INSERT:TOKENS -->
 
 ## 可复用组件与样式
-> 格式：组件/样式名（路径）| 用途 | 复用方式
+> 格式：组件/样式名 | 来源：内部路径/外部包名@版本 | 能力关键词 | 属性/事件/插槽或样式契约 | 适用与不适用场景 | 主题与扩展点/包装层路径 | 使用方
+> 外部资产另附官方 URL 与许可证；内部资产无对应字段时写“无”，不要编造。
 <!-- APN:INSERT:UI_REUSE -->
 
 ## 用户偏好
