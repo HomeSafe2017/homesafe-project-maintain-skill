@@ -42,7 +42,7 @@ AI_proj_note/
 ├── index.md          # 项目字典与路由表
 ├── rule.md           # 当前有效约束，无动态日志
 ├── files.md          # 文件级 FRAS 地图与可复用资产
-├── blocks.md         # 模块职责、依赖、涉及文件、产物清理级别
+├── blocks.md         # 当前架构基线、模块职责、依赖与产物清理级别
 ├── vision_prefer.md  # UI、视觉 token、组件样式、用户偏好
 ├── preview.md        # 模型的产品分析，区分事实与推断
 ├── note.md           # 未来意向与预留接口
@@ -61,13 +61,13 @@ AI_proj_note/
 
 没有“最近七条”计数，也不让模型搬运归档。
 
-### 5. 项目内外复用双闸门
+### 5. 按需加载的技术设计门
 
-- 新模块、通用组件和常见 UI/UX 能力在编码前先查项目内资产，再联网检索成熟组件库；
-- 阅读官方文档、官方仓库和包仓库，按兼容性、维护状态、许可证、可访问性及接入成本评估候选；
-- 优先直接复用、配置或包装改造；完全自研必须说明现有方案为何不适合；
-- 编码后审计重复实现、调用方迁移和公共契约，并登记内部资产、外部包及包装层；
-- 详细流程按需加载 `references/reuse.md`，不占用普通维护轮次的注意力。
+- 主 SKILL 只保留触发条件、最小决策产物和完成前审计；
+- 新项目或重大调整才加载 `references/architecture.md`，设计系统边界、依赖、数据事实源、核心数据结构与算法、公共契约和垂直切片；
+- 新模块、通用组件和常见 UI/UX 能力才加载 `references/reuse.md`，优先复用内部资产或成熟外部库；
+- 轻量决策留在本轮计划，持续有效内容写入现有笔记，不新增常驻架构文件；
+- 普通维护轮次不读取这些设计指南，避免注意力稀释。
 
 ### 6. Git 历史幂等状态机
 
@@ -90,13 +90,14 @@ homesafe-project-maintain-skill/
 ├── SKILL.md                      # 主协议，日常加载
 ├── references/
 │   ├── project-setup.md          # 初始化、默认规范、模块切割与考古分类
+│   ├── architecture.md           # 新项目架构、数据结构与算法等核心技术设计
 │   ├── reuse.md                  # 内外部复用检索、成熟库评估与通用组件设计
 │   └── templates.md              # 字典、九文件、GitHistory 与锚点模板
 ├── README.md
 └── LICENSE
 ```
 
-参考文件采用渐进加载：初始化、结构修复或模块规划时读取对应文件；命中复用双闸门时加载 `reuse.md`。普通维护轮次不预读这些参考文件。
+参考文件采用渐进加载：初始化或结构修复时读取对应文件；新项目或重大调整加载 `architecture.md`；命中复用闸门时加载 `reuse.md`。普通维护轮次不预读这些参考文件。
 
 ## 安装
 
@@ -105,7 +106,7 @@ homesafe-project-maintain-skill/
 Trae 全局安装示例：
 
 ```text
-C:\Users\<用户名>\.trae-cn\skills\homesafe-project-maintain\
+C:\Users\<用户名>\.trae-cn\skills\homesafe-project-maintain-skill\
 ├── SKILL.md
 └── references\
 ```

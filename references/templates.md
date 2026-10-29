@@ -18,6 +18,7 @@
 | OPS | rule.md | APN:INSERT:OPS | 运维前读取；配套变化 | UPSERT | OPS-ID |
 | FILES | files.md | APN:INSERT:FILES | 修改文件前后 | UPSERT | 文件路径 |
 | REUSE | files.md | APN:INSERT:REUSE | 设计前读取；新复用资产 | UPSERT | 路径/包名+名称 |
+| ARCHITECTURE | blocks.md | APN:BEGIN:ARCHITECTURE | 新项目/重大调整；架构变化 | REPLACE | 单例区块 |
 | BLOCKS | blocks.md | APN:INSERT:BLOCKS | 模块设计/变更 | UPSERT | 模块路径 |
 | UI | vision_prefer.md | APN:INSERT:UI | UI 开发/改版 | UPSERT | 页面/路由 |
 | TOKENS | vision_prefer.md | APN:INSERT:TOKENS | UI 开发；token 变化 | UPSERT | token 名 |
@@ -76,7 +77,18 @@
 ## 4. blocks.md
 
 ```markdown
-# 模块认知地图
+# 模块与架构认知地图
+
+<!-- APN:BEGIN:ARCHITECTURE -->
+## 当前架构基线
+- 系统边界与非目标：
+- 功能域、模块关系与依赖方向：
+- 核心数据事实源与关键不变量：
+- 关键质量约束：
+- 运行与部署形态：
+- 关键方案及重新评估条件（详细取舍引用 DECISIONS）：
+- 首个垂直切片与验证结果：
+<!-- APN:END:ARCHITECTURE -->
 
 > 每个模块以路径为唯一键，新增模块使用以下结构。
 <!-- APN:INSERT:BLOCKS -->
