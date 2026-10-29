@@ -1,6 +1,6 @@
 ---
 name: homesafe-project-maintain-skill
-description: 为项目建立并持续维护 AI_proj_note 认知笔记体系，通过项目字典、固定锚点、分层读取和幂等写入保持项目认知。触发场景为初始化或维护笔记、新建或接手项目、重大架构调整，以及新模块、通用组件、核心数据结构、关键算法或 UI 开发前需要进行架构、复用与技术设计时。
+description: 新建、创建、初始化或搭建项目时必须使用，在写代码前完成项目认知、架构与复用设计。首次接触或接手已有项目、维护 AI_proj_note、重大架构调整，以及新模块、通用组件、核心数据结构、关键算法或 UI 开发时也使用。
 ---
 
 # Skill：AI 项目笔记管理
@@ -181,11 +181,19 @@ description: 为项目建立并持续维护 AI_proj_note 认知笔记体系，�
 - **S 优先**：`FILES` 优先记录代码表面看不出的隐藏约束，不复述整段代码。
 - **单一事实源**：一个事实只有一个归属 Section，其他地方引用。
 
-## 8. 按需参考文件
+## 8. 按需参考文件与读取路由
 
-- 初始化、默认开发规范、模块切割与考古分类：[project-setup.md](references/project-setup.md)
-- 新项目架构、数据结构与算法、公共契约及垂直切片设计：[architecture.md](references/architecture.md)
-- 项目内外复用检索、成熟库评估、包装改造与通用组件设计：[reuse.md](references/reuse.md)
-- 创建或修复字典、九个常驻文件、GitHistory 与全部锚点：[templates.md](references/templates.md)
+先根据下表判断事件，只读取命中的参考文件和项目 Section；未命中任何行时，不加载参考文件。
 
-不要在普通维护轮次预先读取上述参考文件。
+| 当前事件 | 必读的 Skill 参考文件 | 同时读取的项目内容 | 不适用时禁止读取 |
+|---|---|---|---|
+| 首次启用、创建新项目笔记 | [project-setup.md](references/project-setup.md) → [templates.md](references/templates.md) | 根 README、依赖清单和关键入口 | 日常开发不得重新执行初始化阅读 |
+| 旧版笔记迁移、字典或锚点缺失 | [project-setup.md](references/project-setup.md) 的旧版升级节；需要修复模板时再读 [templates.md](references/templates.md) | 现有笔记、`index.md` 及待修复目标区块 | 不重新进行全项目考古 |
+| 新建项目、重大架构调整、核心数据结构或关键算法设计 | [architecture.md](references/architecture.md) | `ARCHITECTURE`、相关 `BLOCKS`、重大 `DECISIONS`、相关 `FUTURE` | 普通功能或局部修复不读 |
+| 新模块、通用组件、常见 UI 能力、准备复制实现 | [reuse.md](references/reuse.md) | `REUSE`、`UI_REUSE`，以及相关的 `BLOCKS`、`TOKENS`、`FUTURE` | 不新增组件且不复制实现时不读 |
+| 修改已有文件或普通功能 | 无 | 相关 `BLOCKS` 与 `FILES`；新功能另读相关 `FUTURE` | 不加载架构、复用或初始化指南 |
+| 排查相似故障或环境坑 | 无 | 按关键词搜索 `LESSONS`，只读命中条目 | 不通读全部历史 |
+| 服务器部署或运维 | 无 | `OPS` 及相关 `BLOCKS` | 不加载架构或初始化指南 |
+| 接手漏记、补记 Git 历史 | 无 | `CURRENT`、目标 `HISTORY` 和必要的 `git log` | 不读全部参考文件 |
+
+同一轮同时命中多行时才合并读取；参考文件中的方法不要复制回项目笔记，项目笔记只保存本项目实际决策与事实。
